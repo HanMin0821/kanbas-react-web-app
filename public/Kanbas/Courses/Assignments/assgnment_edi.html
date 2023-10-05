@@ -1,0 +1,241 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../../../styles.css"/>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="../../../vendors/fontawesome/css/all.css"/>
+    <link rel="stylesheet" href="../../../vendors/bootstrap/css/bootstrap.css"/>
+</head>
+
+
+<body>
+
+<div class = "row">
+    <!--      canvasBar-->
+    <div class="col-1 wd-kanbas-navigation">
+        <ul>
+            <li><img src="../../../images/image4.jpg" class="wd-image" >
+
+            </li>
+            <li ><a href="../../Account/Profile/index.html">
+                <i class="fa fa-user " aria-hidden="true" style="color: grey"></i>
+                Account</a></li>
+            <li > <a href="../../Dashboard/screen.html">
+                <i class="fa fa-tachometer-alt" aria-hidden="true"></i>
+                Dashboard</a></li>
+
+            <li class="wd-active" > <a href="../../Courses/Home/index.html">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Courses</a></li>
+
+            <li > <a href="../../Calendar/screen.html">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar</a></li>
+            <li > <a href="../../Inbox/screen.html">
+                <i class="fa fa-archive" aria-hidden="true"></i>
+                Inbox</a></li>
+            <li > <a href="../../History/screen.html">
+                <i class="fa fa-clock" aria-hidden="true"></i>
+                History</a></li>
+            <li > <a href="../../Studio/screen.html">
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+                Studio</a></li>
+            <li > <a href="../../Commons/screen.html">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                Commons</a></li>
+            <li > <a href="../../Help/screen.html">
+                <i class="fa fa-question-circle" aria-hidden="true"></i><br/>
+                Help</a></li>
+        </ul>
+    </div>
+    <!--    main part-->
+    <div class="col wd-main-page">
+        <!--        bar-->
+        <div class="row ">
+            <div class="wd-bar-container">
+                <nav class="" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb ">
+                        <li class="wd-fa-bar"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+                        <li class="breadcrumb-item wd-red-large"><a href="#">CS5001</a></li>
+                        <li class="breadcrumb-item active wd-grey-large" aria-current="page">Assignment</li>
+                    </ol>
+                </nav>
+                <button type="button" class="btn btn-light float-end"><a href="#">Student View</a></button>
+            </div>
+        </div>
+
+
+
+        <hr/>
+        <!--center-->
+        <div class="row ">
+            <!--course bar-->
+            <div class="col-1 wd-course-page">
+                <ul class = "wd-profile-navigation">
+                    <li><a href="../Home/index.html">Home</a></li>
+                    <li><a href="../../profile/index.html">Modules</a></li>
+                    <li><a href="#">Piazza</a></li>
+                    <li><a href="#">Zoom Meetings </a></li>
+                    <li  class="wd-active"><a href="../Assignments/assignment.html">Assignments</a></li>
+                    <li ><a href="#">Quizzes</a></li>
+                    <li><a href="../Grades/index.html">Grades</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Panopto Video</a></li>
+                    <li><a href="#">Discussions</a></li>
+                    <li><a href="#">Announcements</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Files</a></li>
+                    <li><a href="#">Rubrics</a></li>
+                    <li><a href="#">Outcomes</a></li>
+                    <li><a href="#">Collaborations</a></li>
+                    <li><a href="#">Syllabus</a></li>
+                    <li><a href="#">Progress Reports(EAB Navigate)</a></li>
+                    <li><a href="../Settings/Detail.html">Settings</a></li>
+                </ul>
+            </div>
+            <!--center page-->
+            <div class="col wd-main-part">
+                <div class="row">
+                    <div>
+                        <div class="float-end"><button type="button" class="btn btn-light wd-button-equal-height "><i class="fa fa-ellipsis-v" aria-hidden="true" style="font-size: 0.1em"></i></button></div>
+                        <div class="float-end wd-green_l"><button type="button" class="btn btn-light wd-button-equal-height  "><a href="assignment.html"><i class="fa fa-plus" aria-hidden="true"></i>Published</a></button></div>
+                    </div>
+                </div>
+                <hr/>
+<!--                main part-->
+                <div class="col">
+                    <div class="row">
+                        <label for="assignmentName" ><h3>Assignment Name</h3></label>
+                        <input  class="wd-input"
+                                type="text"
+                                value="A1 - ENV + HTML"
+                                id="assignmentName"
+                                placeholder="Assignment Name"
+                        />
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <textarea rows="5">This assignment describes how to install the development environment for creating andworking with Web applications we will be developing this semester. We will add newcontent every week, pushing the code to a GitHub source repository, and then deployingthe content to a remote server hosted on Netlify
+                        </textarea>
+                    </div>
+
+
+
+
+
+                    <div class="row ">
+                        <div class="form-container">
+                            <div class="form-row">
+                                <label for = "point" class="wd-label">Points</label>
+                                <input value="100" id = "point" type="number" max="100" min="50" step="5" class="wd-input"/>
+                            </div>
+                        </div>
+
+                        <div class="form-container">
+                            <div class="form-row">
+                                <label class="wd-label"> Assignment Group</label>
+                                <select class="wd-input">
+                                    <option>ASSIGNMENTS</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-container">
+                            <div class="form-row">
+                                <label class="wd-label"> Display Grade as</label>
+                                <select class="wd-input">
+                                    <option>Percentage</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-container">
+                            <div class="form-row">
+                                <div class="wd-placehoder">
+                                </div>
+                                <div class="wd-input">
+                                    <input type="checkbox" value="check" id = "check_1">
+                                    <label for="check_1">
+                                        Do not count this assignment towards the final grade
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-container">
+                            <div class="form-row wd-top-align">
+                                <label class="wd-label "> Submission Type</label>
+
+                                <div class="wd-subform wd-input">
+                                    <select class="wd-online we-w">
+                                        <option>
+                                            Online
+                                        </option>
+                                    </select>
+                                    <br/>
+                                    <h5>Online Entry Options</h5>
+                                    <input type="checkbox" />Text Entry <br />
+                                    <label> <input type="checkbox" /> Website URL </label> <br />
+                                    <input type="checkbox" /> Media Recordings<br />
+                                    <input type="checkbox" /> Student Annotation<br />
+                                    <input type="checkbox" /> File Uploads<br />
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-container">
+                            <div class="form-row wd-top-align">
+                                <label class="wd-label "> Assign</label>
+                                <div class="wd-subform wd-input">
+                                    <h4>Assign to</h4>
+                                    <input id="assign" value="Everyone" class="we-w">
+                                    <br/>
+                                    <h4>Due</h4>
+                                    <input type="datetime-local" value="2023-09-18T23:59" class="we-w" >
+                                    <br/>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <h4>Available from</h4>
+                                            <input type="datetime-local" value="2023-09-6T12:59" >
+                                        </div>
+                                        <div class="col-3">
+                                            <h4>Until</h4>
+                                            <input type="datetime-local"  >
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

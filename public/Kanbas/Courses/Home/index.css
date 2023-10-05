@@ -1,0 +1,316 @@
+.wd-kanbas-navigation {
+    background-color: black;
+    list-style: none;
+    padding: 0px;
+    width: 80px;
+}
+
+.wd-kanbas-navigation li {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.wd-kanbas-navigation li.wd-active {
+    background-color: white;
+}
+.wd-kanbas-navigation li.wd-active a {
+    color: red;
+}
+
+.wd-kanbas-navigation a {
+    color: white;
+    text-decoration: none;
+}
+
+.wd-kanbas-navigation a i {
+    color: red;
+    font-size: 2em;
+    margin-bottom: 1px;
+}
+
+
+.wd-profile-navigation {
+    background-color: white;
+    list-style: none;
+    padding: 5px;
+    width:120px ;
+    margin-right: 20px;
+}
+.wd-profile-navigation li {
+    text-align:left;
+    padding-left: 10px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.wd-profile-navigation li.wd-active {
+    border-left: 2px solid black;
+    margin-right: 10px;
+}
+.wd-profile-navigation li.wd-active a {
+    color: black;
+    padding-left: 8px;
+}
+
+.wd-profile-navigation a {
+    color: red;
+    text-decoration: none;
+}
+
+.btn a {
+    color: black;
+    text-decoration: none;
+}
+
+.wd-red-link {
+    color: #ff001e; /* This will change the color of the link to red */
+    text-decoration: None;
+}
+.wd-button-right{
+    text-align: right;
+}
+.card{
+    width: 260px;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    margin-right: 30px;
+    margin-left: 30px;
+
+}
+.wd-dashboard-table{
+    margin-left: 40px;
+}
+
+.wd-course-table{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap:100px;
+}
+
+.de-bg-red{
+    background-color: red;
+}
+
+.wd-button-equal-length{
+    width: 250px;
+    margin-bottom: 5px;
+    align-content: center;
+}
+.wd-button-equal-height{
+    height: 40px;
+}
+
+.wd-main-page{
+    margin-left: 10px;
+    margin-right: 40px;
+}
+.wd-main-part{
+
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.wd-course-page{
+    margin-right: 30px;
+
+}
+.wd-right-bar{
+    width:250px;
+    margin-left: 20px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.button-color-white a{
+    color:white;
+}
+.fa-plus{
+    font-size: 0.2em;
+}
+.fa-ellipsis-v{
+    font-size:0.1em;
+    color:dimgray;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.wd-course-material{
+    margin-left: 20px;
+
+}
+.wd-end{
+    float:right;
+}
+.fa-check-circle{
+    color: forestgreen;
+}
+.fa-exclamation-circle{
+    color: darkred;
+    margin-right: 10px;
+}
+.wd-to-red{
+    color:red;
+    font-size: 10px;
+}
+.wd-to-grey{
+    color:grey;
+    font-size: 5px;
+}
+.wd-small-red-link{
+    color: red;
+    font-size: 3px;
+}
+.list-group-item a{
+    color: black;
+    text-decoration: None;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wd-red-large a{
+    margin-left: 10px;
+    color: red;
+    font-size: 30px;
+}
+
+.wd-grey-large {
+    color: grey;
+    font-size: 30px;
+}
+.wd-col{
+    display: flex;
+    flex-direction: column;
+}
+.wd-bar-container{
+    display: flex;
+    justify-content:space-between;
+}
+
+
+.wd-image{
+    height: 5em;
+}
+
+.wd-fa-bar a{
+    color: red;
+    margin: 10px;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.wd-black-bar{
+    background-color: black;
+    height: 70px;
+}
+.wd-black-bar-e{
+    display: flex;
+    justify-content:space-between;
+    padding-top: 10px;
+    color: white;
+}
+
+.wd-white{
+    color: white;
+}
+
+
+.wd-k{
+    background-color: white;
+}
+.wd-k li{
+    height:10px;
+}
+.wd-red a{
+    color: red;
+}
+
+
+
+
+
+.wd-kanbas-bar {
+    background-color: white;
+    list-style: none;
+    padding: 0px;
+    width: 80%;
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.wd-kanbas-bar li {
+    padding: 10px;
+
+    font-size: 0.8em;
+    text-align: center;
+}
+
+
+
+.wd-kanbas-bar a {
+    color: red;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.wd-kanbas-bar a i {
+    color: red;
+    font-size: 2em;
+    margin-bottom: 1px;
+}
+.wd-icon{
+    margin-right: 30px;
+    color: red;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.wd-red-icon{
+    color: red;
+    font-size: 2em;
+}
+
+
+.wd-grey{
+    color: grey;
+    font-size: 2em;
+    margin-bottom: 30px;
+    margin-right: 30px;
+
+}
+
+
+.wd-black-bar_1{
+    background-color: black;
+    height: 100px;
+}
+
+.wd-right-part{
+    margin-left: 30px;
+}
+
+.right-part a{
+    color: red;
+    text-decoration: None;
+}
+
+.right-part i{
+    color: red;
+    margin-left: 30px;
+}
+
+.wd-white{
+    color: white;
+}
+
+.wd-black{
+    color: black;
+}
+
+
