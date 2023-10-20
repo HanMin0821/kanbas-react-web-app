@@ -88,11 +88,11 @@
     margin-left: 40px;
     margin-right: 40px;
 }
-.container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap:100px;
-}
+/*.container{*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
+/*    gap:100px;*/
+/*}*/
 
 .de-bg-red{
     background-color: red;
