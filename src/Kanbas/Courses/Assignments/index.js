@@ -1,49 +1,59 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import db from "../../Database";
-import { AiOutlineMore, AiFillCheckCircle } from "react-icons/ai";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+// import db from "../../Database";
+// import "./index.css"
+import { useSelector, useDispatch } from "react-redux";
+import { addAssignemts, deleteAssignemts,
+    updateAssignemts, setAssignemt } from "./assignmentsReducer";
+import {updateModule} from "../Modules/modulesReducer";
 
-function Assignments() {
+function AssignmentList() {
     const { courseId } = useParams();
-    const assignments = db.assignments;
-    const courseAssignments = assignments.filter(
-        (assignment) => assignment.course === courseId);
+    const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+    const assignment = useSelector((state) => state.assignmentsReducer.assignment);
+    const dispatch = useDispatch();
+
     return (
-        <div>
-            <h2>Assignments for course {courseId}</h2>
-            <div className="row">
-                <div className="row">
-                    <div className="col">
-                        <input id = "search" placeholder="Search for Assignment"></input>
+        <ul className="list-group">
+            <li className="list-group-item">
+                <div className={"wd-row"}>
+                    <div className={"wd-col"}>
+                        <input placeholder={"Search an assignment"}/>
+                        <input
+                            value={assignment.title}
+                            onChange={(e) =>
+                                dispatch(setAssignemt({ ...assignment, title: e.target.value }))
+                            }/>
                     </div>
-                    <div className="col">
-                        <div className="float-end ">
-                            <button className="btn btn-light wd-button-equal-height wd-element-mar">
-                                <AiOutlineMore className="wd-icon" />
-                            </button>
-                        </div>
-                        <div className="float-end "><button className="btn btn-danger wd-button-equal-height">+Assignment</button></div>
-                        <div className="float-end "><button className="btn btn-light wd-button-equal-height">+Group</button></div>
+                    <div className={"wd-col"}>
+                        <button
+                            onClick={() => dispatch(addAssignemts({ ...assignment, _id: courseId }))}  className={"btn btn-success wd-button"}>Add</button>
+                        <button
+                            onClick={() => dispatch(updateAssignemts(assignment))} className={"btn btn-warning wd-button"}>
+                            Update </button>
                     </div>
                 </div>
-            </div>
 
-            <div className="list-group">
-                <ul>
-                    <li className="list-group-item list-group-item-dark"><h3>ASSIGNMENTS</h3></li>
-                    {courseAssignments.map((assignment) => (
-                        <Link
-                            key={assignment._id}
-                            to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                            className="list-group-item d-flex justify-content-between align-items-center">
-                            {assignment.title}
-                            <AiFillCheckCircle className="wd-icon" style={{color: 'green'}} />
-                        </Link>
-                    ))}
-                </ul>
 
-            </div>
-        </div>
+            </li>
+
+
+            {assignments
+                .map((assignment, index) => (
+                    <li key={index} className="list-group-item">
+                        <button
+                            onClick={() => dispatch(setAssignemt(assignment))} className={"btn btn-success float-end"}>
+                            Edit
+                        </button>
+
+                        <button
+                            onClick={() => dispatch(deleteAssignemts(assignment._id))} className={"btn btn-danger float-end"}>
+                            Delete
+                        </button>
+
+                        <h3>{assignment.title}</h3>
+                    </li>))}
+        </ul>
     );
 }
-export default Assignments;
+export default AssignmentList;

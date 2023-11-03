@@ -4,3 +4,17 @@
 .wd-modulelist {
     margin-bottom: 30px;
 }
+
+.wd-col{
+    display: flex;
+    flex-direction: column;
+}
+.wd-row{
+    display: flex;
+    flex-direction: row;
+}
+.wd-button{
+
+    margin-left: 5px;
+    margin-bottom: 5px;
+}

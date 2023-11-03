@@ -9,15 +9,13 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import "./index.css"
 
-function Courses() {
+function Courses({ courses }) {
     const { courseId } = useParams();
-    const {pathname} = useLocation();
-    const [empty, kanbas, courses, id, screen] = pathname.split("/");
-    const course = db.courses.find((course) => course._id === courseId);
+    const course = courses.find((course) => course._id === courseId);
     return (
         <div>
 
-            <h2 className="wd-course-head">Course {course.name} / {screen}</h2>
+            <h2 className="wd-course-head">Course {course.name}</h2>
             <hr/>
             <br/>
             <CourseNavigation />
