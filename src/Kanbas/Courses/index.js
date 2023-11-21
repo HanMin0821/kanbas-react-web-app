@@ -8,10 +8,25 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import "./index.css"
+import {useState, useEffect} from "react";
+import * as client from"./client";
+
 
 function Courses({ courses }) {
     const { courseId } = useParams();
-    const course = courses.find((course) => course._id === courseId);
+    // const course = courses.find((course) => course._id === courseId);
+    const [course, setCourse] = useState({});
+    const fetchCourse = async () => {
+        const course = await client.fetchCourse(courseId);
+        setCourse(course);
+    };
+    useEffect(() => {
+        fetchCourse();
+    }, []);
+
+
+
+
     return (
         <div>
 

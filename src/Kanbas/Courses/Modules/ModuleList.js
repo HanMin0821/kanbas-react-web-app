@@ -1,98 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import db from "../../Database";
-// import "./index.css"
-import { useSelector, useDispatch } from "react-redux";
-import {
-    addModule,
-    deleteModule,
-    updateModule,
-    setModule,
-} from "./modulesReducer";
+import * as client from "./client";
+import {deleteModule, updateModule} from "./client";
 
 function ModuleList() {
-  const { courseId } = useParams();
-    const modules = useSelector((state) => state.modulesReducer.modules);
-    const module = useSelector((state) => state.modulesReducer.module);
-    const dispatch = useDispatch();
-  // const [modules, setModules] = useState(db.modules);
-  // const [module, setModule] = useState({
-  //       name: "New Module",
-  //       description: "New Description",
-  //       course: courseId,
-  //   });
-  //   const addModule = (module) => {
-  //       setModules([
-  //           { ...module, _id: new Date().getTime().toString() },
-  //           ...modules,
-  //       ]);
-  //   };
-  //   const deleteModule = (moduleId) => {
-  //       setModules(modules.filter(
-  //           (module) => module._id !== moduleId));
-  //   };
-  //   const updateModule = () => {
-  //       setModules(
-  //           modules.map((m) => {
-  //               if (m._id === module._id) {
-  //                   return module;
-  //               } else {
-  //                   return m;
-  //               }
-  //           })
-  //       );
-  //   }
-  //
-  //
+    const { courseId } = useParams();
+    const [modules, setModules] = useState([]);
+    const [module, setModule] = useState({});
+    // const modules = db.modules;
+
+    const addModule = async () => {
+        const newModule = await client.addModule(courseId, module);
+        setModules([newModule, ...modules]);
+    };
+
+    const deleteModule = async (id) => {
+        try {
+            await client.deleteModule(id);
+            setModules(modules.filter((module) => module._id !== id));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const updateModule = async () => {
+        try {
+            await client.updateModule(module);
+            setModules(modules.map((c) => (c._id === module._id ? module : c)));
+        } catch (error) {
+            console.log(error);
+        }
+    };;
+
+    const fetchModules = async () => {
+        const modules = await client.findModulesForCourse(courseId);
+        setModules(modules);
+    };
+
+    useEffect(() => {
+        fetchModules();
+    }, []);
 
     return (
-      <ul className="list-group">
-          <li className="list-group-item">
-              <div className={"wd-row"}>
-                  <div className={"wd-col"}>
-                      <input
-                          value={module.name}
-                          onChange={(e) =>
-                              dispatch(setModule({ ...module, name: e.target.value }))
-                          }/>
-                      <textarea
-                          value={module.description}
-                          onChange={(e) =>
-                              dispatch(setModule({ ...module, description: e.target.value }))
-                          }/>
-                  </div>
-                  <div className={"wd-col"}>
-                      <button
-                          onClick={() => dispatch(addModule({ ...module, course: courseId }))}  className={"btn btn-success wd-button"}>Add</button>
-                      <button
-                          onClick={() => dispatch(updateModule(module))} className={"btn btn-warning wd-button"}>
-                          Update </button>
-                  </div>
-              </div>
+        <ul className="list-group">
+            <li className="list-group-item">
+                <button onClick={addModule} className= "btn btn-success">Add</button>
+                <button onClick={updateModule} className= "btn btn-success">Update</button>
+                <input
+                    value={module.name}
+                    onChange={(e) => setModule({ ...module, name: e.target.value })}
+                    className="form-control"
+                    placeholder="Module Name"
+                />
+            </li>
+            {modules
+                .filter((module) => module.course === courseId)
+                .map((module, index) => (
+                    <li key={index} className="list-group-item">
+                        <h3>{module.name}</h3>
+                        <p>{module.description}</p>
+                        {module.lessons && (
+                            <ul className="list-group">
 
-
-          </li>
-
-
-        {modules
-            .filter((module) => module.course === courseId)
-            .map((module, index) => (
-                <li key={index} className="list-group-item">
-                    <button
-                        onClick={() => dispatch(setModule(module))} className={"btn btn-success float-end"}>
-                        Edit
-                    </button>
-
-                    <button
-                        onClick={() => dispatch(deleteModule(module._id))} className={"btn btn-danger float-end"}>
-                        Delete
-                    </button>
-
-                    <h3>{module.name}</h3>
-                  <p>{module.description}</p>
-                  <p>{module._id}</p>
-                </li>))}
-      </ul>
-  );
+                                {module.lessons.map((lesson, index) => (
+                                    <li key={index} className="list-group-item">
+                                        <h4>{lesson.name}</h4>
+                                        <p>{lesson.description}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        <button className="btn btn-danger" onClick={deleteModule}>Deleted</button>
+                    </li>
+                ))}
+        </ul>
+    );
 }
 export default ModuleList;

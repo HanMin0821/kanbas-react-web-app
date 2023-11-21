@@ -1,91 +1,105 @@
-import { React, useState } from "react";
+import {useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import db from "../Database";
 import "./index.css"
+import * as client from "../Courses/client";
 
-function Dashboard({ courses, course, setCourse, addNewCourse,
-                       deleteCourse, updateCourse }
-) {
-    //
-    // const [courses, setCourses] = useState(db.courses);
-    // const [course, setCourse] = useState({
-    //     name: "New Course",      number: "New Number",
-    //     startDate: "2023-09-10", endDate: "2023-12-15",
-    // });
-    //
-    // const addNewCourse = () => {
-    //     setCourses([...courses,
-    //         { ...course,
-    //             _id: new Date().getTime() }]);
-    // };
-    //
-    // const deleteCourse = (courseId) => {
-    //     setCourses(courses.filter((course) => course._id !== courseId));
-    // };
-    // const updateCourse = () => {
-    //     setCourses(
-    //         courses.map((c) => {
-    //             if (c._id === course._id) {
-    //                 return course;
-    //             } else {
-    //                 return c;
-    //             }
-    //         })
-    //     );
-    // };
-    //
+function Dashboard() {
+    const [courses, setCourses] = useState([]);
+    const [course, setCourse] = useState({});
+    const fetchCourses = async() => {
+        const courses = await client.fetchCourses();
+        setCourses(courses);
+    };
+
+    const deleteCourse = async (id) => {
+        try {
+            await client.deleteCourse(id);
+            setCourses(courses.filter((course) => course._id !== id));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const updateCourse = async () => {
+        try {
+            await client.updateCourse(course);
+            setCourses(courses.map((c) => (c._id === course._id ? course : c)));
+        } catch (error) {
+            console.log(error);
+        }
+    };;
+
+    const addCourse = async () =>{
+       const newCourse = await client.addCourse(course);
+        setCourses([newCourse, ...courses]);
+    };
+
+
+
+
+
+
+
+    useEffect(() => {
+        fetchCourses();
+    }, []);
     return (
         <div>
             <h1>Dashboard</h1>
-            <hr/>
-            <h5>Course</h5>
-            <hr/>
+            <hr />
+            <h2>Published Courses ({courses.length})</h2>
+            <input
+                type="text"
+                placeholder="Course Name"
+                value={course.name}
+                onChange={(e) => setCourse({ ...course, name: e.target.value })}
+            />
+            <button onClick={addCourse} className="btn btn-success">Update</button>
+            <button className="btn btn-success" onClick= {addCourse}>Add</button>
 
-            <input value={course.name} className="form-control"
-                   onChange={(e) =>
-                       setCourse({ ...course, name: e.target.value }) } />
-            <input value={course.number} className="form-control"
-                   onChange={(e) =>
-                       setCourse({ ...course, number: e.target.value }) } />
-            <input value={course.startDate} className="form-control" type="date"
-                   onChange={(e) =>
-                       setCourse({ ...course, startDate: e.target.value }) }/>
-            <input value={course.endDate} className="form-control" type="date"
-                   onChange={(e) =>
-                       setCourse({ ...course, endDate: e.target.value }) } />
-            <br/>
-            <div className={"wd-button-flex"}>
-                <button onClick={addNewCourse}  className={"btn btn-success wd-button float-end"} >
-                    Add
-                </button>
-                <button onClick={updateCourse} className={"btn btn-primary wd-button float-end"} >
-                    Update
-                </button>
-            </div>
-            <div className="list-group">
-                {courses.map((course) => (
-                    <Link key={course._id}
-                        to={`/Kanbas/Courses/${course._id}`}
-                        className="list-group-item">
-                        <button
-                            onClick={(event) => {
-                                event.preventDefault();
-                                setCourse(course);
-                            }} className={"btn btn-warning wd-button"}>
-                            Edit
-                        </button>
-                        <button
-                            onClick={(event) => {
-                                event.preventDefault();
-                                deleteCourse(course._id);
-                            }} className={"btn btn-danger wd-button"}>
-                            Delete
-                        </button>
-                        {course.name}
-                    </Link>
-                ))}
+
+
+
+            <div class="row">
+                <div class="row row-cols-1 row-cols-md-5 g-4">
+                    {courses.map((course, index) => (
+                        <div class="col" style={{ width: 300 }}>
+                            <div class="card">
+                                <img src="../../images/image3.jpg" class="card-img-top" alt="..." />
+                                <div class="card-body">
+
+                                    <button
+                                        onClick={() => deleteCourse(course._id)}
+                                        className="btn btn-danger float-end"
+                                    >
+                                        Delete
+                                    </button>
+
+                                    <button onClick={() => setCourse(course)}>Edit</button>
+
+
+                                    <h5 class="card-title">{course.name}</h5>
+
+                                    <Link
+                                        key={course._id}
+                                        to={`/Kanbas/Courses/${course._id}`}
+                                        className="btn btn-primary"
+                                    >
+                                        {course.name}
+                                    </Link>
+                                    <p class="card-text">
+                                        This is a longer card with supporting text below as a
+                                        natural lead-in to additional content. This content is a
+                                        little bit longer.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
 }
-export default Dashboard
+
+export default Dashboard;
