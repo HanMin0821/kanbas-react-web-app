@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+const API_BASE = process.env.REACT_APP_LAB_API_BASE;
 function EncodingParametersInURLs() {
     const [a, setA] = useState(34);
     const [b, setB] = useState(23);
@@ -14,7 +16,7 @@ function EncodingParametersInURLs() {
         <div>
             <h3>Encoding Parameters In URLs</h3>
             <h4>Assignment</h4>
-            <a href={`http://localhost:4000/a5/assignment/score/${assignment.score}`}
+            <a href={`${API_BASE}/a5/assignment/score/${assignment.score}`}
                className= "btn btn-primary">
                 Update Assignment Score
             </a>
@@ -26,7 +28,7 @@ function EncodingParametersInURLs() {
                 value={assignment.score}
                 onChange={(e) => setAssignment({...assignment, score: e.target.value})}
             />
-            <a href={`http://localhost:4000/a5/assignment/score/${assignment.score}`}
+            <a href={`${API_BASE}/a5/assignment/score/${assignment.score}`}
                className= "btn btn-primary">
                 Update Assignment Score
             </a>
@@ -37,18 +39,18 @@ function EncodingParametersInURLs() {
             value={assignment.title}
             onChange={(e) => setAssignment({...assignment, title: e.target.value})}
             />
-            <a href={`http://localhost:4000/a5/assignment/title/${assignment.title}`}
+            <a href={`${API_BASE}/a5/assignment/title/${assignment.title}`}
                className= "btn btn-primary">
                 Update Assignment Title
             </a>
 
 
-            <a href={"http://localhost:4000/a5/assignment"}
+            <a href={`${API_BASE}/a5/assignment`}
             className={"btn btn-primary"}>
                 Get Assignment
             </a>
 
-            <a href={"http://localhost:4000/a5/assignment/title"}
+            <a href={`${API_BASE}/a5/assignment/title`}
                className={"btn btn-primary"}>
                 Get Assignment Title
             </a>
@@ -65,24 +67,24 @@ function EncodingParametersInURLs() {
 
             <h3>Query Parameters</h3>
             <a
-                href={`http://localhost:4000/a5/calculator?a=${a}&b=${b}&operation=add`}
+                href={`${API_BASE}/a5/calculator?a=${a}&b=${b}&operation=add`}
                 className="btn btn-primary">
                 Add {a} + {b}
             </a>
             <a
-                href={`http://localhost:4000/a5/calculator?a=${a}&b=${b}&operation=subtract`}
+                href={`${API_BASE}/a5/calculator?a=${a}&b=${b}&operation=subtract`}
                 className="btn btn-danger">
                 Substract {a} - {b}
             </a>
 
             <h3>Path Parameters</h3>
             <a
-                href={`http://localhost:4000/a5/add/${a}/${b}`}
+                href={`${API_BASE}/a5/add/${a}/${b}`}
                 className="btn btn-primary">
                 Add {a} + {b}
             </a>
             <a
-                href={`http://localhost:4000/a5/subtract/${a}/${b}`}
+                href={`${API_BASE}/a5/subtract/${a}/${b}`}
                 className="btn btn-danger">
                 Substract {a} - {b}
             </a>

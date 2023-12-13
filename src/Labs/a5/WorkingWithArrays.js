@@ -1,5 +1,7 @@
 import React,{ useState, useEffect} from "react";
 import axios from "axios";
+
+const API_BASE = process.env.REACT_APP_LAB_API_BASE;
 function WorkingWithArrays() {
     const [id, setId] = useState(1);
     const[title, setTitle] = useState("NodeJS Assignment")
@@ -7,7 +9,7 @@ function WorkingWithArrays() {
 
 
     const fetchTodosPromise = () => {
-        const promise = axios.get("http://localhost:4000/a5/todos");
+        const promise = axios.get(`${API_BASE}/a5/todos`);
         console.log(promise);
         promise.then((response) => {
             console.log(response.data);
@@ -16,7 +18,7 @@ function WorkingWithArrays() {
     };
 
 
-    const TODOS_API = "http://localhost:4000/a5/todos"
+    const TODOS_API = `${API_BASE}/a5/todos`
 
     const fetchTodos = async () => {
         const response = await axios.get(TODOS_API);
@@ -24,12 +26,12 @@ function WorkingWithArrays() {
     };
 
     const createTodo = async() =>{
-        const response = await axios.get("http://localhost:4000/a5/todos/create");
+        const response = await axios.get(`${API_BASE}/a5/todos/create`);
         setTodos(response.data);
     }
 
     const postTodo = async() =>{
-        const response = await axios.post("http://localhost:4000/a5/todos", {
+        const response = await axios.post(`${API_BASE}/a5/todos`, {
             title: title,
         });
         setTodos(response.data);
@@ -105,7 +107,7 @@ function WorkingWithArrays() {
             />
             <h3>Updating an Item in an Array</h3>
             <a
-                href={`http://localhost:4000/a5/todos/${id}/title/${title}`}
+                href={`${API_BASE}/a5/todos/${id}/title/${title}`}
                 className="btn btn-primary me-2" >
                 Update Title
             </a>
@@ -117,7 +119,7 @@ function WorkingWithArrays() {
                 value= {id}
                 onChange={(e) => setId(e.target.value)}
             />
-            <a href={'http://localhost:4000/a5/todos/${id}'}
+            <a href={`${API_BASE}/a5/todos/${id}`}
                className="btn btn-primary">
                 Fetch Todo {id}
             </a>
@@ -129,7 +131,7 @@ function WorkingWithArrays() {
 
 
             <h2>Fetch Array</h2>
-            <a href="http://localhost:4000/a5/todos" className="btn btn-primary">
+            <a href={`${API_BASE}/a5/todos`} className="btn btn-primary">
                 Fetch Todos
             </a>
 
